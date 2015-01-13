@@ -18,8 +18,8 @@
 
     <!-- CHAT MARKUP -->
     <div class='example-chat l-demo-container'>
-      <header>MY CHAT APP</header>
-Who is your favourite SMU Prof? Let us know by filling in the message box below!
+      <header>My Chat App</header>
+
       <div class='example-chat-toolbar'>
         <label for='nameInput'>Username:</label>
         <input ng-model='name' type='text' id='nameInput' placeholder='enter a username...'>
@@ -36,34 +36,26 @@ Who is your favourite SMU Prof? Let us know by filling in the message box below!
         <input ng-model='msg' ng-keydown="addMessage($event)" type='text' id='messageInput'  placeholder='Type a message...'>
       </footer>
     </div>
-<br/>
-http://kaixuan2013.github.io/is429/livechat.html
 
     <script>
       var myApp = angular.module("myApp", ["firebase"]);
-
       myApp.controller('MyController', ['$scope', '$firebase',
         function($scope, $firebase) {
           //CREATE A FIREBASE REFERENCE
-          var ref = new Firebase("https://benjaminlow.firebaseio-demo.com/");
-
+          var ref = new Firebase("https://hvsja4hvkzx.firebaseio-demo.com/");
           // GET MESSAGES AS AN ARRAY
           $scope.messages = $firebase(ref).$asArray();
-
           //ADD MESSAGE METHOD
           $scope.addMessage = function(e) {
-
             //LISTEN FOR RETURN KEY
             if (e.keyCode === 13 && $scope.msg) {
               //ALLOW CUSTOM OR ANONYMOUS USER NAMES
               var name = $scope.name || 'anonymous';
-
               //ADD TO FIREBASE
               $scope.messages.$add({
                 from: name,
                 body: $scope.msg
               });
-
               //RESET MESSAGE
               $scope.msg = "";
             }
