@@ -18,7 +18,7 @@
 
     <!-- CHAT MARKUP -->
     <div class='example-chat l-demo-container'>
-      <header>My Chat App</header>
+      <header>MY CHAT APP</header>
 
       <div class='example-chat-toolbar'>
         <label for='nameInput'>Username:</label>
@@ -36,6 +36,8 @@
         <input ng-model='msg' ng-keydown="addMessage($event)" type='text' id='messageInput'  placeholder='Type a message...'>
       </footer>
     </div>
+<br/>
+http://kaixuan2013.github.io/is429/livechat.html
 
     <script>
       var myApp = angular.module("myApp", ["firebase"]);
@@ -43,7 +45,7 @@
       myApp.controller('MyController', ['$scope', '$firebase',
         function($scope, $firebase) {
           //CREATE A FIREBASE REFERENCE
-          var ref = new Firebase("https://hvsja4hvkzx.firebaseio-demo.com/");
+          var ref = new Firebase("https://benjaminlow.firebaseio-demo.com/");
 
           // GET MESSAGES AS AN ARRAY
           $scope.messages = $firebase(ref).$asArray();
